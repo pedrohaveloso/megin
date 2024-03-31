@@ -2,8 +2,8 @@ defmodule Megin.Repo.Migrations.CreateMessages do
   use Ecto.Migration
 
   def change do
-    create table(:messages) do
-      add(:uuid, :uuid)
+    create table(:messages, primary_key: false) do
+      add(:uuid, :uuid, primary_key: true)
 
       add(:content, :string)
       add(:sender, :string)
