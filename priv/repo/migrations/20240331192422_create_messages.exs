@@ -7,7 +7,8 @@ defmodule Megin.Repo.Migrations.CreateMessages do
 
       add(:content, :string)
       add(:sender, :string)
-      add(:target, :string)
+
+      add(:chat, references(:chats, column: :uuid, type: :binary_id))
 
       timestamps()
     end

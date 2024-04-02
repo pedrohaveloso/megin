@@ -8,7 +8,7 @@ defmodule Megin.Communications.Message do
   schema "messages" do
     field(:content, :string)
     field(:sender, :string)
-    field(:target, :string)
+    field(:chat, :string)
 
     timestamps()
   end
@@ -16,7 +16,7 @@ defmodule Megin.Communications.Message do
   @doc false
   def changeset(message, attrs \\ %{}) do
     message
-    |> cast(attrs, [:content, :sender, :target])
-    |> validate_required([:content, :sender, :target])
+    |> cast(attrs, [:content, :sender, :chat])
+    |> validate_required([:content, :sender, :chat])
   end
 end
