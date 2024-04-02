@@ -20,7 +20,10 @@ defmodule Megin.MixProject do
 
   defp deps do
     [
+      # HTTP server.
       {:bandit, "~> 1.0"},
+
+      # Database.
       {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"}
     ]
