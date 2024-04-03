@@ -1,4 +1,6 @@
 defmodule Megin.Communications.Message do
+  alias Megin.Communications
+
   use Ecto.Schema
 
   import Ecto.Changeset
@@ -8,7 +10,8 @@ defmodule Megin.Communications.Message do
   schema "messages" do
     field(:content, :string)
     field(:sender, :string)
-    field(:chat, :string)
+
+    belongs_to(:chat, Communications.Chat, references: :uuid)
 
     timestamps()
   end
