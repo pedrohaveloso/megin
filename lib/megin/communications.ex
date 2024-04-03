@@ -11,8 +11,8 @@ defmodule Megin.Communications do
   end
 
   def get_messages(chat) do
-    %Message{}
-    |> where(chat: chat)
+    Message
+    |> where(chat: ^chat)
     |> Repo.all()
   end
 end
