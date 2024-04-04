@@ -13,16 +13,16 @@ Repo.insert(%User{
 
 Repo.insert(%Chat{})
 
-user_uuid = User |> Repo.all() |> Enum.at(0) |> Map.get(:uuid)
-chat_uuid = Chat |> Repo.all() |> Enum.at(0) |> Map.get(:uuid)
+user = User |> Repo.all() |> Enum.at(0)
+chat = Chat |> Repo.all() |> Enum.at(0)
 
 Repo.insert(%Participant{
-  chat: chat_uuid,
-  user: user_uuid
+  chat: chat,
+  user: user
 })
 
 Repo.insert(%Message{
   content: "Send a message.",
-  sender: user_uuid,
-  chat: chat_uuid
+  user: user,
+  chat: chat
 })
