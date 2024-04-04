@@ -1,17 +1,18 @@
 defmodule Megin.Communications.Message do
-  alias Megin.Communications
-
   use Ecto.Schema
 
   import Ecto.Changeset
 
-  @primary_key {:uuid, :binary_id, autogenerate: true}
+  alias Megin.Accounts
+  alias Megin.Communications
+
+  @primary_key {:id, :binary_id, autogenerate: true}
 
   schema "messages" do
     field(:content, :string)
-    field(:sender, :string)
 
-    belongs_to(:chat, Communications.Chat, references: :uuid)
+    belongs_to(:user, Accounts.User, type: :binary_id)
+    belongs_to(:chat, Communications.Chat, type: :binary_id)
 
     timestamps()
   end
