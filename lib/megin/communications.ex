@@ -10,9 +10,9 @@ defmodule Megin.Communications do
     |> Repo.insert()
   end
 
-  def get_messages(chat) do
+  def get_messages(chat_id) do
     Message
-    |> where(chat: ^chat)
+    |> where(chat_id: ^chat_id)
     |> Repo.all()
   end
 end
