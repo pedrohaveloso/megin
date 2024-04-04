@@ -25,7 +25,10 @@ defmodule Megin.MixProject do
 
       # Database.
       {:ecto_sql, "~> 3.0"},
-      {:postgrex, ">= 0.0.0"}
+      {:postgrex, ">= 0.0.0"},
+
+      # JSON parser.
+      {:jason, "~> 1.4"}
     ]
   end
 end
