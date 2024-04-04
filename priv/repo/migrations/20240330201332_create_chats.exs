@@ -3,7 +3,7 @@ defmodule Megin.Repo.Migrations.CreateChats do
 
   def change do
     create table(:chats, primary_key: false) do
-      add(:uuid, :uuid, primary_key: true)
+      add(:id, :uuid, primary_key: true)
 
       timestamps()
     end
