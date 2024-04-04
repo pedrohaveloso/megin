@@ -3,7 +3,7 @@ defmodule Megin.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users, primary_key: false) do
-      add(:uuid, :uuid, primary_key: true)
+      add(:id, :uuid, primary_key: true)
 
       add(:name, :string)
       add(:password, :string)
