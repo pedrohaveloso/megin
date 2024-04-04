@@ -15,6 +15,16 @@ defmodule MeginWeb do
   def controller do
     quote do
       import Plug.Conn
+
+      def read_json_body(conn) do
+        with {:ok, body, _conn} <- read_body(conn),
+             {:ok, decoded_body} <- Jason.decode(body) do
+          {:ok, decoded_body}
+        else
+          {:error, reason} ->
+            {:error, "Invalid JSON body."}
+        end
+      end
     end
   end
 end
