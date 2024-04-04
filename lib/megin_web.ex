@@ -25,6 +25,18 @@ defmodule MeginWeb do
             {:error, "Invalid JSON body."}
         end
       end
+
+      def send_json_resp(conn, status, body) do
+        Jason.encode(body) |> IO.inspect()
+
+        case Jason.encode(body) do
+          {:ok, encoded_body} ->
+            send_resp(conn, status, encoded_body)
+
+          {:error, _reason} ->
+            send_resp(conn, 500, "JSON encode error.")
+        end
+      end
     end
   end
 end
