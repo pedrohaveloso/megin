@@ -3,12 +3,12 @@ defmodule Megin.Repo.Migrations.CreateMessages do
 
   def change do
     create table(:messages, primary_key: false) do
-      add(:uuid, :uuid, primary_key: true)
+      add(:id, :uuid, primary_key: true)
 
       add(:content, :string)
-      add(:sender, :string)
 
-      add(:chat, references(:chats, column: :uuid, type: :binary_id))
+      add(:user_id, references(:users, column: :id, type: :binary_id))
+      add(:chat_id, references(:chats, column: :id, type: :binary_id))
 
       timestamps()
     end
