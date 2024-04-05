@@ -9,7 +9,7 @@ defmodule MeginWeb.UserController do
       send_json_resp(conn, 200, struct)
     else
       {:error, _reason} ->
-        send_json_resp(conn, 400, %{reason: "Invalid body."})
+        send_json_resp(conn, 400, %{reason: "Invalid data."})
     end
   end
 end
