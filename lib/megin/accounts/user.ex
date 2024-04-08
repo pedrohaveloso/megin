@@ -1,11 +1,12 @@
 defmodule Megin.Accounts.User do
+  alias Megin.Accounts
   alias Megin.Communications
 
   use Ecto.Schema
 
   import Ecto.Changeset
 
-  @derive {Jason.Encoder, only: [:name, :password, :email]}
+  @derive {Jason.Encoder, only: [:id, :name, :email]}
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
@@ -16,6 +17,7 @@ defmodule Megin.Accounts.User do
 
     has_many(:participant, Communications.Participant)
     has_many(:message, Communications.Message)
+    has_many(:session, Accounts.User)
 
     timestamps()
   end
