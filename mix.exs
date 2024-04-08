@@ -28,7 +28,10 @@ defmodule Megin.MixProject do
       {:postgrex, ">= 0.0.0"},
 
       # JSON parser.
-      {:jason, "~> 1.4"}
+      {:jason, "~> 1.4"},
+
+      # Argon2 password hashing.
+      {:argon2_elixir, "~> 4.0"}
     ]
   end
 end
