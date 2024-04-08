@@ -9,4 +9,8 @@ defmodule Megin.Accounts do
     |> User.changeset(attrs)
     |> Repo.insert()
   end
+
+  def get_user(%{"email" => email}) do
+    Repo.get_by(User, email: email)
+  end
 end
