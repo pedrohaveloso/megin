@@ -24,10 +24,16 @@ defmodule Megin.Accounts.User do
 
   @doc false
   def changeset(user, attrs \\ %{}) do
-    user
-    |> cast(attrs, [:name, :password, :email])
-    |> validate_format(:email, ~r/@/)
-    |> validate_required([:name, :password, :email])
-    |> unique_constraint(:email)
+    changeset =
+      user
+      |> cast(attrs, [:name, :password, :email])
+      |> validate_format(:email, ~r/@/)
+      |> validate_required([:name, :password, :email])
+      |> unique_constraint(:email)
+
+    password = get_change(changeset, :password)
+
+    changeset
+    |> put_change(:password, Argon2.hash_pwd_salt(password))
   end
 end
