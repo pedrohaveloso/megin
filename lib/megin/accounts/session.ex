@@ -5,7 +5,7 @@ defmodule Megin.Accounts.Session do
 
   import Ecto.Changeset
 
-  @derive {Jason.Encoder, only: [:ip, :active?, :user]}
+  @derive {Jason.Encoder, only: [:id, :ip, :active?, :user]}
 
   @primary_key {:id, :binary_id, autogenerate: true}
 
@@ -21,7 +21,8 @@ defmodule Megin.Accounts.Session do
   @doc false
   def changeset(session, attrs \\ %{}) do
     session
-    |> cast(attrs, [:ip, :active?, :user])
+    |> cast(attrs, [:ip, :active?])
+    |> cast_assoc(:user, with: &Accounts.User.changeset/2)
     |> validate_required([:ip, :active?, :user])
   end
 end
