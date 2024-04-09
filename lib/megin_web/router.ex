@@ -9,7 +9,11 @@ defmodule MeginWeb.Router do
     conn |> MeginWeb.UserController.get()
   end
 
-  post "/message" do
+  post "/sessions" do
+    conn |> MeginWeb.SessionController.create()
+  end
+
+  post "/messages" do
     conn |> MeginWeb.MessageController.create()
   end
 end
