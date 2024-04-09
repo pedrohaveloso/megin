@@ -16,7 +16,7 @@ defmodule MeginWeb.UserController do
   def get(conn) do
     with {:ok, body} <- read_json_body(conn),
          result <- Accounts.get_user(body) do
-      send_json_resp(conn, 200, %{result: result})
+      send_json_resp(conn, 200, result)
     else
       {:error, _reason} ->
         send_json_resp(conn, 400, %{reason: "Invalid data."})
